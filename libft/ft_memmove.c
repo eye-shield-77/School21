@@ -6,7 +6,7 @@
 /*   By: btaxider <eyeshield77@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 23:17:17 by btaxider          #+#    #+#             */
-/*   Updated: 2020/05/18 16:26:50 by btaxider         ###   ########.fr       */
+/*   Updated: 2020/05/23 21:25:41 by btaxider         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,27 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char	*tmp;
+	unsigned char	*s;
+	unsigned char	*d;
+	size_t			i;
 
-	tmp = (char *)malloc(sizeof(char) * len);
-	if (tmp == NULL)
+	if (!dst && !src && len)
 		return (NULL);
-	ft_memcpy(tmp, src, len);
-	ft_memcpy(dst, tmp, len);
-	free(tmp);
+	s = (unsigned char*)src;
+	d = (unsigned char*)dst;
+	i = len;
+	if (d < s)
+	{
+		while (len--)
+			*d++ = *s++;
+	}
+	else
+	{
+		while (len--)
+		{
+			d[i - 1] = s[i - 1];
+			i--;
+		}
+	}
 	return (dst);
 }

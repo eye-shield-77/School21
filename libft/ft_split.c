@@ -6,13 +6,13 @@
 /*   By: btaxider <eyeshield77@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 16:40:51 by btaxider          #+#    #+#             */
-/*   Updated: 2020/05/19 14:26:51 by btaxider         ###   ########.fr       */
+/*   Updated: 2020/05/19 17:09:35 by btaxider         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_countwords(char const *str, char c)
+static int	countwords(char const *str, char c)
 {
 	unsigned int	i;
 	int				words;
@@ -31,7 +31,7 @@ static int	ft_countwords(char const *str, char c)
 	return (words);
 }
 
-static char	*ft_strndup(const char *str, size_t n)
+static char	*strndupl(const char *str, size_t n)
 {
 	char			*s;
 
@@ -40,6 +40,17 @@ static char	*ft_strndup(const char *str, size_t n)
 		return (NULL);
 	ft_strlcpy(s, str, n + 1);
 	return (s);
+}
+
+static void	*free_res(char **res)
+{
+	int				i;
+
+	i = -1;
+	while (res[++i])
+		free(res[i]);
+	free(res);
+	return (NULL);
 }
 
 char		**ft_split(char const *str, char c)
@@ -51,8 +62,7 @@ char		**ft_split(char const *str, char c)
 
 	i = 0;
 	k = 0;
-	res = (char **)malloc(sizeof(char *) * (ft_countwords(str, c)) + 1);
-	if (res == NULL)
+	if (!(res = (char **)malloc(sizeof(char *) * (countwords(str, c)) + 1)))
 		return (NULL);
 	while (str[i])
 	{
@@ -63,8 +73,9 @@ char		**ft_split(char const *str, char c)
 			i++;
 		if (i > j)
 		{
-			res[k] = ft_strndup(str + j, i - j);
-			k++;
+			res[k] = strndupl(str + j, i - j);
+			if (res[k++] == NULL)
+				return (free_res(res));
 		}
 	}
 	res[k] = NULL;

@@ -6,7 +6,7 @@
 /*   By: btaxider <eyeshield77@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 18:57:18 by btaxider          #+#    #+#             */
-/*   Updated: 2020/05/18 16:26:23 by btaxider         ###   ########.fr       */
+/*   Updated: 2020/05/23 21:18:45 by btaxider         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 char	*ft_itoa(int n)
 {
 	char	*str;
+	char	*int_min;
 
+	int_min = "-2147483648";
 	if (!(str = (char *)malloc(sizeof(char) * 2)))
 		return (NULL);
 	if (n == -2147483648)
-		return (ft_strcpy(str, "-2147483648"));
+		return (ft_strdup(int_min));
 	if (n < 0)
 	{
 		str[0] = '-';

@@ -6,15 +6,16 @@
 /*   By: btaxider <eyeshield77@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 03:34:35 by btaxider          #+#    #+#             */
-/*   Updated: 2020/05/18 16:28:50 by btaxider         ###   ########.fr       */
+/*   Updated: 2020/05/23 20:56:34 by btaxider         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+//#include "libft.h"
+#include "stdio.h"
 
 int		ft_toupper(int c)
 {
-	if (c >= 'a' && c <= 'z')
+	if (c >= 97 && c <= 122)
 		c -= 32;
 	return (c);
 }

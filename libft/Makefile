@@ -5,97 +5,63 @@
 #                                                     +:+ +:+         +:+      #
 #    By: btaxider <eyeshield77@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/05/16 02:03:12 by btaxider          #+#    #+#              #
-#    Updated: 2020/05/19 14:35:46 by btaxider         ###   ########.fr        #
+#    Created: 2020/05/09 17:33:04 by btaxider          #+#    #+#              #
+#    Updated: 2020/05/23 21:46:52 by btaxider         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
-FLAGS = -Wall -Werror -Wextra
-SRC =
-BONUS =
+SRC = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c \
+		ft_memcmp.c ft_strlen.c ft_strlcpy.c ft_strlcat.c ft_strchr.c \
+		ft_strrchr.c ft_strnstr.c ft_strncmp.c ft_atoi.c ft_isalpha.c \
+		ft_isascii.c ft_isalnum.c ft_isdigit.c ft_isprint.c \
+		ft_toupper.c ft_tolower.c \
+		ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c ft_strtrim.c \
+		ft_split.c ft_itoa.c ft_strmapi.c \
+		ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
+
+BONUS_SRC = ft_lstnew.c ft_lstdelone.c \
+			ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
+			ft_lstclear.c ft_lstiter.c ft_lstmap.c
+
+OBJ = ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memmove.o ft_memchr.o \
+		ft_memcmp.o ft_strlen.o ft_strlcpy.o ft_strlcat.o ft_strchr.o \
+		ft_strrchr.o ft_strnstr.o ft_strncmp.o ft_atoi.o ft_isalpha.o \
+		ft_isascii.o ft_isalnum.o ft_isdigit.o ft_isprint.o \
+		ft_toupper.o ft_tolower.o \
+		ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o \
+		ft_split.o ft_itoa.o ft_strmapi.o \
+		ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o
+
+BONUS_OBJ = ft_lstnew.o ft_lstdelone.o \
+			ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o \
+			ft_lstclear.o ft_lstiter.o ft_lstmap.o
+
 HEADER = libft.h
-OBJS = $(SRC:.c=.o)
-BONUS_OBJS = $(BONUS:.c=.o)
 
-ifdef WITH_BONUS
-OBJ_FILES = $(OBJS) $(BONUS_OBJS)
-else
-OBJ_FILES = $(OBJS)
-endif
+NAME = libft.a
+FLAGS = -c -Wall -Werror -Wextra -I.
 
-SRC += ft_atoi.c
-SRC += ft_bzero.c
-SRC += ft_calloc.c
-SRC += ft_isalnum.c
-SRC += ft_isalpha.c
-SRC += ft_isascii.c
-SRC += ft_isdigit.c
-SRC += ft_isprint.c
-SRC += ft_itoa.c
-SRC += ft_memccpy.c
-SRC += ft_memchr.c
-SRC += ft_memcmp.c
-SRC += ft_memcpy.c
-SRC += ft_memmove.c
-SRC += ft_memset.c
-SRC += ft_putchar_fd.c
-SRC += ft_putstr_fd.c
-SRC += ft_putendl_fd.c
-SRC += ft_putnbr_fd.c
-SRC += ft_split.c
-SRC += ft_strchr.c
-SRC += ft_strcpy_bonus.c
-SRC += ft_strdup.c
-SRC += ft_strjoin.c
-SRC += ft_strlcat.c
-SRC += ft_strlcpy.c
-SRC += ft_strlen.c
-SRC += ft_strmapi.c
-SRC += ft_strncmp.c
-SRC += ft_strnstr.c
-SRC += ft_strrchr.c
-SRC += ft_strtrim.c
-SRC += ft_substr.c
-SRC += ft_tolower.c
-SRC += ft_toupper.c
+.c.o: $(SRC)
+	gcc $(FLAGS) -o $@ $<
 
-BONUS += ft_lstnew.c
-BONUS += ft_lstadd_back.c
-BONUS += ft_lstadd_front.c
-BONUS += ft_lstclear.c
-BONUS += ft_lstdelone.c
-BONUS += ft_lstiter.c
-BONUS += ft_lstlast.c
-BONUS += ft_lstmap.c
-BONUS += ft_lstsize.c
+$(NAME): $(HEADER) $(OBJ)
+	ar rc $@ $^
+	ranlib $(NAME)
 
-.PHONY: all, re, clean, fclean, bonus
+bonus: $(HEADER) $(BONUS_OBJ)
+	ar rc $(NAME) $^
+	ranlib $(NAME)
 
 all: $(NAME)
 
-$(NAME): $(OBJ_FILES) $(HEADER)
-	@echo "Library in the making..."
-	@ar rc $(NAME) $(OBJ_FILES)
-	@ranlib $(NAME)
-	@echo "Done!"
-
-%.o: %.c $(HEADER)
-	@gcc $(FLAGS) -c $< -o $@
-
-bonus:
-	@$(MAKE) WITH_BONUS=1 all
-
 clean:
-	@/bin/rm -f *.o
+	rm -rf $(OBJ) $(BONUS_OBJ)
 
 fclean: clean
-	@/bin/rm -f $(NAME)
-
-so:
-	gcc -fPIC $(FLAGS) -c $(SRC)
-	gcc -shared -Wl,-soname,libft.so -o libft.so $(OBJ)
+	rm -rf $(NAME)
 
 re: fclean all
 
-
+so: fclean
+	gcc -fPIC $(FLAGS) $(SRC) $(BONUS_SRC)
+	gcc -shared -Wl,-soname,libft.so -o libft.so *.o
