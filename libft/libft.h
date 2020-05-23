@@ -6,23 +6,15 @@
 /*   By: btaxider <eyeshield77@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 22:54:59 by btaxider          #+#    #+#             */
-/*   Updated: 2020/05/23 21:42:16 by btaxider         ###   ########.fr       */
+/*   Updated: 2020/05/23 23:12:02 by btaxider         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
-
-typedef struct		s_list
-{
-	void			*val;
-	size_t			val_size;
-	struct s_list	*next;
-}					t_list;
 
 void	*ft_memset(void *str, int c, size_t len);
 void	ft_bzero(void *str, size_t n);
@@ -57,6 +49,5 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char const *str, int fd);
 void	ft_putendl_fd(char const *str, int fd);
-
 
 #endif
