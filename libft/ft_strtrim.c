@@ -6,7 +6,7 @@
 /*   By: btaxider <eyeshield77@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 16:33:37 by btaxider          #+#    #+#             */
-/*   Updated: 2020/05/23 21:45:51 by btaxider         ###   ########.fr       */
+/*   Updated: 2020/05/23 22:31:36 by btaxider         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ char		*ft_strtrim(char const *str, char const *set)
 	unsigned int	k;
 	char			*s;
 
+	if (!s1)
+		return (NULL);
+	if (!set)
+		return ((char*)str);
 	i = 0;
 	while (in_set(str[i], set))
 		i++;

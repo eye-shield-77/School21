@@ -6,7 +6,7 @@
 /*   By: btaxider <eyeshield77@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 03:13:23 by btaxider          #+#    #+#             */
-/*   Updated: 2020/05/19 19:01:41 by btaxider         ###   ########.fr       */
+/*   Updated: 2020/05/23 22:26:59 by btaxider         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@ char	*ft_strnstr(const char *str1, const char *str2, size_t n)
 	size_t	i;
 	size_t	j;
 
+	if (*str2 == '\0')
+		return ((char*)str1);
+	j = ft_strlen(str2);
+	if (ft_strlen(str1) < j || n < j)
+		return (NULL);
 	i = 0;
 	while (i < n && str1[i] != '\0')
 	{

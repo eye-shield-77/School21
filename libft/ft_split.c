@@ -6,7 +6,7 @@
 /*   By: btaxider <eyeshield77@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 16:40:51 by btaxider          #+#    #+#             */
-/*   Updated: 2020/05/19 17:09:35 by btaxider         ###   ########.fr       */
+/*   Updated: 2020/05/23 22:32:59 by btaxider         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ char		**ft_split(char const *str, char c)
 	int				k;
 	char			**res;
 
+	if (!str)
+		return (NULL);
 	i = 0;
 	k = 0;
 	if (!(res = (char **)malloc(sizeof(char *) * (countwords(str, c)) + 1)))

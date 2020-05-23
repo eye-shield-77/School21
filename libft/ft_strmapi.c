@@ -6,7 +6,7 @@
 /*   By: btaxider <eyeshield77@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 18:07:00 by btaxider          #+#    #+#             */
-/*   Updated: 2020/05/18 16:28:09 by btaxider         ###   ########.fr       */
+/*   Updated: 2020/05/23 22:34:47 by btaxider         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	unsigned int	i;
 	char			*str;
 
+	if (!s || !f)
+		return (NULL);
 	i = 0;
 	str = (char *)malloc(sizeof(char) * (ft_strlen(s)) + 1);
 	if (str == NULL)

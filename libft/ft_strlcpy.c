@@ -6,7 +6,7 @@
 /*   By: btaxider <eyeshield77@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 02:24:22 by btaxider          #+#    #+#             */
-/*   Updated: 2020/05/18 16:27:59 by btaxider         ###   ########.fr       */
+/*   Updated: 2020/05/23 22:22:30 by btaxider         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,22 @@
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	size_t	i;
+	int		j;
 
+	j = 0;
 	i = 0;
-	while (src[i] && i < size - 1)
+	if (!src || !dst)
+		return (0);
+	while (src[j] != '\0')
+		j++;
+	if (size > 0)
 	{
-		dst[i] = src[i];
-		i++;
+		while (src[i] != '\0' && i < size - 1)
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
 	}
-	dst[i] = '\0';
-	return (i);
+	return (j);
 }
