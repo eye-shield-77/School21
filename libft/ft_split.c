@@ -6,13 +6,13 @@
 /*   By: btaxider <eyeshield77@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 16:40:51 by btaxider          #+#    #+#             */
-/*   Updated: 2020/05/23 22:32:59 by btaxider         ###   ########.fr       */
+/*   Updated: 2020/05/23 22:57:32 by btaxider         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	countwords(char const *str, char c)
+static int	nwords(char const *str, char c)
 {
 	unsigned int	i;
 	int				words;
@@ -60,11 +60,9 @@ char		**ft_split(char const *str, char c)
 	int				k;
 	char			**res;
 
-	if (!str)
-		return (NULL);
 	i = 0;
 	k = 0;
-	if (!(res = (char **)malloc(sizeof(char *) * (countwords(str, c)) + 1)))
+	if (!str || !(res = (char **)malloc(sizeof(char *) * (nwords(str, c)) + 1)))
 		return (NULL);
 	while (str[i])
 	{
