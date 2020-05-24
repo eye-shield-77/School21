@@ -6,7 +6,7 @@
 #    By: btaxider <eyeshield77@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/09 17:33:04 by btaxider          #+#    #+#              #
-#    Updated: 2020/05/23 21:46:52 by btaxider         ###   ########.fr        #
+#    Updated: 2020/05/24 17:44:48 by btaxider         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,10 +19,6 @@ SRC = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c \
 		ft_split.c ft_itoa.c ft_strmapi.c \
 		ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 
-BONUS_SRC = ft_lstnew.c ft_lstdelone.c \
-			ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
-			ft_lstclear.c ft_lstiter.c ft_lstmap.c
-
 OBJ = ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memmove.o ft_memchr.o \
 		ft_memcmp.o ft_strlen.o ft_strlcpy.o ft_strlcat.o ft_strchr.o \
 		ft_strrchr.o ft_strnstr.o ft_strncmp.o ft_atoi.o ft_isalpha.o \
@@ -31,10 +27,6 @@ OBJ = ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memmove.o ft_memchr.o \
 		ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o \
 		ft_split.o ft_itoa.o ft_strmapi.o \
 		ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o
-
-BONUS_OBJ = ft_lstnew.o ft_lstdelone.o \
-			ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o \
-			ft_lstclear.o ft_lstiter.o ft_lstmap.o
 
 HEADER = libft.h
 
@@ -48,20 +40,12 @@ $(NAME): $(HEADER) $(OBJ)
 	ar rc $@ $^
 	ranlib $(NAME)
 
-bonus: $(HEADER) $(BONUS_OBJ)
-	ar rc $(NAME) $^
-	ranlib $(NAME)
-
 all: $(NAME)
 
 clean:
-	rm -rf $(OBJ) $(BONUS_OBJ)
+	rm -rf $(OBJ)
 
 fclean: clean
 	rm -rf $(NAME)
 
 re: fclean all
-
-so: fclean
-	gcc -fPIC $(FLAGS) $(SRC) $(BONUS_SRC)
-	gcc -shared -Wl,-soname,libft.so -o libft.so *.o

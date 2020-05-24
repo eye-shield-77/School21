@@ -6,7 +6,7 @@
 /*   By: btaxider <eyeshield77@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 03:25:03 by btaxider          #+#    #+#             */
-/*   Updated: 2020/05/24 17:33:57 by btaxider         ###   ########.fr       */
+/*   Updated: 2020/05/24 17:44:03 by btaxider         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ static int	is_whitespace(char ch)
 
 int			ft_atoi(const char *str)
 {
-	long	 res;
+	long	res;
 	int		strlen;
-	int 	strstart;
-	int 	is_negative;
+	int		strstart;
+	int		is_negative;
 
 	strlen = -1;
 	while (is_whitespace(str[++strlen]))
@@ -41,8 +41,10 @@ int			ft_atoi(const char *str)
 		;
 	res = 0;
 	while (++strstart < strlen)
+	{
 		res = 10 * res - (str[strstart] - 48);
 		if (res > 0)
-			return (-(1 - is_negative) / 2);
+			return ((is_negative - 1) / 2);
+	}
 	return (is_negative * res);
 }
