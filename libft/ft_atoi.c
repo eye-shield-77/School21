@@ -6,7 +6,7 @@
 /*   By: btaxider <eyeshield77@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 03:25:03 by btaxider          #+#    #+#             */
-/*   Updated: 2020/05/24 17:30:07 by btaxider         ###   ########.fr       */
+/*   Updated: 2020/05/24 17:33:57 by btaxider         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@ int			ft_atoi(const char *str)
 	while (++strstart < strlen)
 		res = 10 * res - (str[strstart] - 48);
 		if (res > 0)
-			return (-(1 - is_negative) / 2)
+			return (-(1 - is_negative) / 2);
 	return (is_negative * res);
 }
