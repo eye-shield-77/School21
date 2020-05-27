@@ -6,7 +6,7 @@
 #    By: btaxider <eyeshield77@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/09 17:33:04 by btaxider          #+#    #+#              #
-#    Updated: 2020/05/25 16:52:34 by btaxider         ###   ########.fr        #
+#    Updated: 2020/05/27 17:44:47 by btaxider         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,6 @@ SRC += ft_strlcpy.c
 SRC += ft_strlen.c
 SRC += ft_strmapi.c
 SRC += ft_strncmp.c
-SRC += ft_strrchr.c
 SRC += ft_strnstr.c
 SRC += ft_strrchr.c
 SRC += ft_strtrim.c
