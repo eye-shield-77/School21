@@ -6,7 +6,7 @@
 /*   By: btaxider <eyeshield77@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 18:57:18 by btaxider          #+#    #+#             */
-/*   Updated: 2020/05/29 17:15:57 by btaxider         ###   ########.fr       */
+/*   Updated: 2020/05/29 17:18:57 by btaxider         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ char		*ft_itoa(int n)
 		return (ft_strdup("-2147483648"));
 	sign = (n < 0) ? 1 : 0;
 	num_len = number_length(n) + sign;
-	printf("%d\n", num_len);
 	if (!(str = (char*)malloc(sizeof(char) * (num_len + 1))))
 		return (NULL);
 	if (n < 0)
